@@ -13,3 +13,4 @@ Taken from a YouTube tutorial: [Godot TopDown Tutorial](https://www.youtube.com/
 - Rewrote enemy deaths
 - Created a bullet manager to simplify player code
 - Added SignalBus to manage signals sent from multiple instances (like enemies)
+- Added Enemy "view" to detect player
