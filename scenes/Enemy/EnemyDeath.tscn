@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -1.0
+_data = [ Vector2( 0.0271493, 0.109091 ), 0.0, 5.02273, 0, 0, Vector2( 1, -0.636364 ), -5.16624, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+spread = 180.0
+gravity = Vector3( 1, -1, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 1.0
+angular_velocity = 25.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 5.0
+radial_accel = 5.0
+angle = 15.0
+angle_random = 0.5
+scale = 8.0
+hue_variation = 1.0
+hue_variation_curve = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Autoplay"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="EnemyDeath" type="Node2D"]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Autoplay"
+anims/Autoplay = SubResource( 4 )

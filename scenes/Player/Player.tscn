@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://artwork/white-square.png" type="Texture" id=2]
+[ext_resource path="res://artwork/player.png" type="Texture" id=2]
 [ext_resource path="res://artwork/light.png" type="Texture" id=3]
+[ext_resource path="res://artwork/player-cursor.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -19,6 +20,11 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="Cursor" type="Sprite" parent="."]
+position = Vector2( 138, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 4 )
+
 [node name="Area2D" type="Area2D" parent="." groups=["player_area"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -26,6 +32,7 @@ shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
+texture_scale = 0.7
 color = Color( 1, 0.654902, 0.654902, 0.886275 )
 shadow_enabled = true
 

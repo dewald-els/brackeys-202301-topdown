@@ -14,3 +14,4 @@ Taken from a YouTube tutorial: [Godot TopDown Tutorial](https://www.youtube.com/
 - Created a bullet manager to simplify player code
 - Added SignalBus to manage signals sent from multiple instances (like enemies)
 - Added Enemy "view" to detect player
+- Seperated Camera from Player to allow more customization like zooming and panning

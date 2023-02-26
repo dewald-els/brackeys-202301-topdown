@@ -1,17 +1,21 @@
 extends Area2D
 class_name Bullet
 
+
 export (int) var speed = 1000
 
+
 var direction := Vector2.ZERO
+
 
 func _physics_process(delta: float) -> void:
 	if (direction != Vector2.ZERO):
 		var velocity = direction * speed * delta
 		global_position += velocity
 	
-func set_direction(direction: Vector2) -> void:
-	self.direction = direction
+
+func set_direction(new_direction: Vector2) -> void:
+	self.direction = new_direction
 
 
 func _on_KillTimer_timeout() -> void:

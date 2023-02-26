@@ -10,3 +10,7 @@ func _ready() -> void:
 	
 func handle_enemy_killed() -> void:
 	print("Enemy was killed")
+
+func _process(delta):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
