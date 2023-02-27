@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://managers/BulletManager/BulletManager.gd"
 }, {
+"base": "Node2D",
+"class": "Coin",
+"language": "GDScript",
+"path": "res://scenes/Coin/Coin.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://scenes/Enemy/Enemy.gd"
+}, {
+"base": "Node2D",
+"class": "EnemySpawner",
+"language": "GDScript",
+"path": "res://scenes/EnemySpawner/EnemySpawner.gd"
 }, {
 "base": "Camera2D",
 "class": "GameCamera",
@@ -42,7 +52,9 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "BulletManager": "",
+"Coin": "",
 "Enemy": "",
+"EnemySpawner": "",
 "GameCamera": "",
 "GameWorld": "",
 "Player": ""
@@ -57,6 +69,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SignalBus="*res://autoloaders/SignalBus.gd"
+CoinManager="*res://autoloaders/CoinManager.gd"
 
 [display]
 

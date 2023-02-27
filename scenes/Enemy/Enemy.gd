@@ -9,7 +9,6 @@ enum EnemyType {
 
 export (EnemyType)var enemy_type = EnemyType.NORMAL
 
-
 onready var health_bar = $Health
 
 
@@ -49,6 +48,9 @@ func _physics_process(delta: float) -> void:
 	look_at(player.position)
 	motion = move_and_slide(motion)
 
+
+func set_type(enemy_type) -> void:
+	self.enemy_type = enemy_type
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("bullet"):
