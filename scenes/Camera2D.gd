@@ -1,7 +1,7 @@
 extends Camera2D
 class_name GameCamera
 
-export(float) var speed = 30.0
+@export var speed: float = 30.0
 
 func _physics_process(delta: float) -> void:
 	var player_nodes = get_tree().get_nodes_in_group("player")

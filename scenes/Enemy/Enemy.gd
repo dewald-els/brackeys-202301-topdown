@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Enemy
 
 enum EnemyType {
@@ -7,14 +7,14 @@ enum EnemyType {
 }
 
 
-export (EnemyType)var enemy_type = EnemyType.NORMAL
+@export var enemy_type: EnemyType = EnemyType.NORMAL
 
-onready var health_bar = $Health
+@onready var health_bar = $Health
 
 
 var enemy_death = preload("res://scenes/Enemy/EnemyDeath.tscn") 
 
-var speed := 2.5
+@export var speed: float
 
 var motion = Vector2()
 var is_active: bool = false
@@ -23,22 +23,23 @@ var total_health: float = 1.0
 
 
 func _ready():
-	match (enemy_type):
-		EnemyType.NORMAL:
-			scale = Vector2(1, 1)
-			health = 1.0
-			speed = 4.5
-		EnemyType.LARGE:
-			scale = Vector2(1.75, 1.75)
-			health = 3.0
-			total_health = 3.0
-			speed = 2.5
-		_: 
-			scale = Vector2(1, 1)
-			health = 1.0
-			speed = 2.5
+	pass
+	# match (enemy_type):
+	# 	EnemyType.NORMAL:
+	# 		scale = Vector2(1, 1)
+	# 		health = 1.0
+	# 		speed = 4.5
+	# 	EnemyType.LARGE:
+	# 		scale = Vector2(1.75, 1.75)
+	# 		health = 3.0
+	# 		total_health = 3.0
+	# 		speed = 2.5
+	# 	_: 
+	# 		scale = Vector2(1, 1)
+	# 		health = 1.0
+	# 		speed = 2.5
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !is_active:
 		return
 	
@@ -46,11 +47,13 @@ func _physics_process(delta: float) -> void:
 
 	position = position.move_toward(player.position, speed)
 	look_at(player.position)
-	motion = move_and_slide(motion)
+	set_velocity(motion)
+	move_and_slide()
+	motion = velocity
 
 
-func set_type(enemy_type) -> void:
-	self.enemy_type = enemy_type
+func set_type(_enemy_type) -> void:
+	self.enemy_type = _enemy_type
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("bullet"):
@@ -64,7 +67,7 @@ func _on_Area2D_area_entered(area):
 		
 		if (health == 0):
 			SignalBus.emit_signal("on_enemy_killed")
-			var enemy_death_instance = enemy_death.instance()
+			var enemy_death_instance = enemy_death.instantiate()
 			enemy_death_instance.global_position = global_position
 			var game_world = get_node("/root/GameWorld")
 			game_world.add_child(enemy_death_instance)

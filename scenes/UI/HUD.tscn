@@ -7,22 +7,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Row1" type="HBoxContainer" parent="Rows"]
-margin_right = 1920.0
-margin_bottom = 153.0
-rect_pivot_offset = Vector2( -970, -665 )
+offset_right = 1920.0
+offset_bottom = 153.0
+pivot_offset = Vector2( -970, -665 )
 size_flags_vertical = 3
 
 [node name="Row2" type="HBoxContainer" parent="Rows"]
-margin_top = 157.0
-margin_right = 1920.0
-margin_bottom = 922.0
-rect_pivot_offset = Vector2( -970, -665 )
+offset_top = 157.0
+offset_right = 1920.0
+offset_bottom = 922.0
+pivot_offset = Vector2( -970, -665 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 
 [node name="Row3" type="HBoxContainer" parent="Rows"]
-margin_top = 926.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_pivot_offset = Vector2( -970, -665 )
+offset_top = 926.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset = Vector2( -970, -665 )
 size_flags_vertical = 3

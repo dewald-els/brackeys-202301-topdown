@@ -8,10 +8,10 @@ enum EnemyType {
 
 var _enemy = preload("res://scenes/Enemy/Enemy.tscn")
 
-export(EnemyType) var enemy_type = EnemyType.NORMAL
+@export var enemy_type: EnemyType = EnemyType.NORMAL
 
 func _ready():
-	var enemy_instance = _enemy.instance();
+	var enemy_instance = _enemy.instantiate();
 	enemy_instance.global_position = global_position
 	enemy_instance.set_type(enemy_type)
 	print("Adding enemy", position, global_position)

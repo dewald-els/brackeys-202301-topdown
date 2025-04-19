@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Player
 
 # Signals
@@ -27,9 +27,15 @@ func _physics_process(_delta: float) -> void:
 		motion.x += 1
 	
 	motion = motion.normalized()
-	motion = move_and_slide(motion * move_speed)
+	set_velocity(motion * move_speed)
+	move_and_slide()
+	motion = velocity
 
-	look_at(get_global_mouse_position())
+	# var look_at_direction_x = lerp(deg_to_rad(rotation), get_global_mouse_position().x, 0.1);
+	# var look_at_direction_y = lerp(deg_to_rad(rotation), get_global_mouse_position().y, 0.1);
+	var target_position = get_global_mouse_position()
+	var target_angle = (target_position - global_position).angle()
+	rotation = lerp_angle(rotation, target_angle, 0.25)
 
 	if Input.is_action_just_pressed("player_fire"):
 		fire()
